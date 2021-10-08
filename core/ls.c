@@ -1,10 +1,6 @@
 #include "global.h"
 
-extern char tilda[100];
-extern char previous[1000];
-extern char buffer[100000];
-
-void RUN_ls(char *arr1, char *arr2, int arg1, int arg2) {
+void runls(char *arr1, char *arr2, int arg1, int arg2) {
     if (arg2) {
         int ss = access(arr2, F_OK);
         if (ss == -1) {
@@ -223,5 +219,3 @@ void RUN_ls(char *arr1, char *arr2, int arg1, int arg2) {
     }
     printf("\n");
 }
-
-// turtle happy

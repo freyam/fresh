@@ -1,23 +1,18 @@
 #include "global.h"
 
-extern char tilda[100];
-extern char previous[1000];
-extern char buffer[100000];
-
 int takeInput(char *str) {
-    size_t bufsize = 5000;
 
-    char *buf = malloc(sizeof(char) * 5000);
-    getline(&buf, &bufsize, stdin);
-    strcpy(str, buf);
-    if (str[strlen(str) - 1] == '\n')
-        str[strlen(str) - 1] = '\0';
+    size_t buffersize = 2000; // take input
 
-    if (strlen(str)) {
-        history_append(str);
+    if (getline(&buf, &buffersize, stdin) == -1) {
+        exit(0);
+    }
+    if (strlen(buf) != 0) {
+        strcpy(str, buf);
+        int slen = strlen(str);
+        str[slen - 1] = '\0';
+
         return 1;
     }
     return 0;
 }
-
-// turtle happy

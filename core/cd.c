@@ -1,10 +1,6 @@
 #include "global.h"
 
-extern char tilda[100];
-extern char previous[1000];
-extern char buffer[100000];
-
-void RUN_cd(char *argu, int arg1, int arg2) {
+void runcd(char *argu, int arg1, int arg2) {
     if (arg2) {
         fprintf(stderr, "Error: More than one location supplied.\n");
         return;
@@ -33,5 +29,3 @@ void RUN_cd(char *argu, int arg1, int arg2) {
         return;
     }
 }
-
-// turtle happy

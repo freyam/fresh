@@ -1,12 +1,6 @@
 #include "global.h"
 
-extern char tilda[100];
-extern char previous[1000];
-extern char buffer[100000];
-
-void RUN_pwd() {
-    char s[1000];
-    printf("%s\n", getcwd(s, 1000));
+void runpwd() {
+    char s[100];
+    printf("%s\n", getcwd(s, 100));
 }
-
-// turtle happy

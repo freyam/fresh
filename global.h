@@ -1,5 +1,5 @@
 #include <arpa/inet.h>
-#include <curses.h>
+#include <ctype.h>
 #include <dirent.h>
 #include <errno.h>
 #include <fcntl.h>
@@ -10,6 +10,7 @@
 #include <readline/history.h>
 #include <readline/readline.h>
 #include <signal.h>
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -17,41 +18,51 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <termios.h>
 #include <time.h>
 #include <unistd.h>
 
 extern char tilda[100];
 extern char previous[1000];
 extern char buffer[100000];
+extern char *buf;
 
-void show_prompt();
+extern int jobslen;
 
-void print_dir();
-char *get_dir(char *);
+typedef struct job {
+    int id;
+    char name[1000];
+    int status;
+} job;
 
-void callpinfo(int);
-void history_append(char *);
-void show_history(int);
+extern int cron1;
+extern int replaypid;
+extern int previousid;
+extern job jobs[10000];
 
-void RUN_cd(char *, int, int);
-void RUN_echo(char *);
-void RUN_pwd();
-void RUN_ls(char *arr1, char *arr2, int arg1, int arg2);
-void RUN_execvp(char **, int);
-
-void command_executor(char *);
-void command_separator(char *);
-
+char *slice(char *, int l, int f);
+char *trim(char *);
+char *trim2(char *, const char *);
+int redirect(char *, int, int);
 int takeInput(char *);
-char *input();
-
-typedef struct bg {
-    char name[512];
-    int pid;
-    struct bg *next;
-} proc;
-
-extern proc *head;
-
-void search(int pid);
+void addhistory(char *);
+void show_prompt();
+void callpinfo(int);
+char *get_dir(char *);
+void commandsep(char *);
+void execute_pipe(char *);
+void execute(char *);
+void killall();
+void fg_or_bg(char **, int);
+void giverecenthistory(int, char *);
+void print_dir();
+void printhistory(int);
+void printjobs();
+void replay(char **, int);
+void runcd(char *, int, int);
+void runecho(char *);
+void runexecvp(char **, int);
+void runls(char *, char *, int, int);
+void runpwd();
+void sig(char **);
+void sigintHandler(int);
+void sigtstpHandler(int);

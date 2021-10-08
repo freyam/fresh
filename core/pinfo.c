@@ -39,5 +39,3 @@ void callpinfo(int pid) {
     printf("Memory -- %s\n", tokens[22]);
     printf("Executable Path -- %s\n", get_dir(buffer2));
 }
-
-// turtle happy

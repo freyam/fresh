@@ -1,10 +1,6 @@
 #include "global.h"
 
-extern char tilda[100];
-extern char previous[1000];
-extern char buffer[100000];
-
-void history_append(char *argu) {
+void addhistory(char *argu) {
     char path[100];
     strcpy(path, tilda);
     strcat(path, "/history.log");
@@ -44,7 +40,7 @@ void history_append(char *argu) {
     close(fd2);
 }
 
-void show_history(int num) {
+void printhistory(int num) {
     char path[100];
     strcpy(path, tilda);
     strcat(path, "/history.log");
@@ -75,5 +71,3 @@ void show_history(int num) {
     close(fd1);
     return;
 }
-
-// turtle happy

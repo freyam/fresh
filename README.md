@@ -2,9 +2,9 @@
 
 `fresh` is **f**reyam's **r**eal-time **e**=!mc^2 **sh**ell.
 
-![](https://www.storypick.com/wp-content/uploads/2018/09/theory-cover3-800x500.jpg)
+![](fresh-vision.jpg)
 
-> _It is simple, yet not working. WOW I am a genius!_
+> _It is even simpler, yet still not working. WOW I am a super genius!_
 
 ## Core Commands
 
@@ -58,6 +58,29 @@
 `core/repeat.c`
 
 -   `repeat {count} {command}` - _repeats the given command {count} times._
+
+-   jobs : prints a list of all currently running jobs along with their pid, in particular,background jobs, in order of their creation along with their state – Running or Stopped.
+
+-   sig <jobNumber> <signalNumber> : takes the job id of a running job and
+    sends a signal value to that process
+
+-   fg <jobNumber> : brings a running or a stopped background job with given job
+    number to foreground.
+
+-   bg <jobNumber> : changes a stopped background job to a running background job
+
+-   overkill : kills all background process at once.
+
+-   quit : exits the shell.
+
+-   CTRL-Z : It is changing the status of currently running job to stop, and pushing it in background process.
+
+-   CTRL-C : It is causing a SIGINT signal to be sent to the current foreground job of my shell. If there is no foreground job, then the signal does have any effect
+
+-   Command Recall using ‘UP’ arrow key:
+-   If the ‘UP’ key is pressed ‘K’ times consecutively, the Kth previous command should be executed.
+
+-   replay -c <command> -t <time> -p <period> command which executes a particular command in fixed time interval for a certain period.
 
 ## Utility Modules
 

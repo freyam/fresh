@@ -1,9 +1,5 @@
 #include "global.h"
 
-extern char tilda[100];
-extern char previous[1000];
-extern char buffer[100000];
-
 void print_dir() {
     char cwd[1024];
     getcwd(cwd, sizeof(cwd));
@@ -53,5 +49,3 @@ char *get_dir(char *cwd) {
         return temp;
     }
 }
-
-// turtle happy
