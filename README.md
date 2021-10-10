@@ -59,60 +59,44 @@
 
 -   `repeat {count} {command}` - _repeats the given command {count} times._
 
--   jobs : prints a list of all currently running jobs along with their pid, in particular,background jobs, in order of their creation along with their state – Running or Stopped.
+### `jobs`
 
--   sig <jobNumber> <signalNumber> : takes the job id of a running job and
-    sends a signal value to that process
+`core/jobs.c`
 
--   fg <jobNumber> : brings a running or a stopped background job with given job
-    number to foreground.
+-   `jobs` - _displays the list of jobs currently running with their current status._
 
--   bg <jobNumber> : changes a stopped background job to a running background job
+### `sig`
 
--   overkill : kills all background process at once.
+`core/sig.c`
 
--   quit : exits the shell.
+-   `sig {job} {signal}` - _sends the given signal to the given job._
 
--   CTRL-Z : It is changing the status of currently running job to stop, and pushing it in background process.
+### `fg`
 
--   CTRL-C : It is causing a SIGINT signal to be sent to the current foreground job of my shell. If there is no foreground job, then the signal does have any effect
+`core/fg.c`
 
--   Command Recall using ‘UP’ arrow key:
--   If the ‘UP’ key is pressed ‘K’ times consecutively, the Kth previous command should be executed.
+-   `fg {job}` - _makes the given job the foreground job._
 
--   replay -c <command> -t <time> -p <period> command which executes a particular command in fixed time interval for a certain period.
+### `bg`
+
+`core/bg.c`
+
+-   `bg {job}` - _makes the given job the background job._
+
+### `replay`
+
+`core/replay.c`
+
+-   `replay -command {command} -interval {interval} -period {period}` - _executes a particular command in fixed time interval for a certain period._
+
+### Signal Handling
+
+-   `CTRL-Z` : _suspends the current job._
+
+-   `CTRL-C` : _terminates the current job._
+
+-   `CTRL-D` : _log you out from your shell._
 
 ## Utility Modules
 
-### `command_executor`
-
-`utils/command_executor.c`
-
--   `command_executor` - _executes a given command._
-
-### `command_separator`
-
-`utils/command_separator.c`
-
--   `command_separator` - _separates a command into its individual arguments._
-
-### `input`
-
-`utils/input.c`
-
--   `input` - _reads a line of input from the user and appends to history._
-
-### `dir`
-
-`utils/dir.c`
-
--   `print_dir` - _prints the relative location of the home directory._
--   `get_dir` - _returns the relative location of a directory._
-
-### `lookup_history`
-
-`utils/lookup_history.c`
-
--   `lookup_history` - _looks up a command in the history and lets user modify and execute them._
-
-_Made with :heart: by Freyam._
+There are several utility modules that can be used to perform various intermediate tasks. These can be found in the `utils` directory.

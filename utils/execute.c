@@ -7,6 +7,8 @@ void db1() {
 
 void execute(char *strinput) {
 
+    char *raw_str = strinput;
+
     int n = strlen(strinput);
     int *arr = (int *)calloc(sizeof(int), n + 1);
     int restore[3] = {0, 0, 0};
@@ -199,7 +201,7 @@ void execute(char *strinput) {
         callpinfo(pid);
         break;
     case 8:
-        printjobs();
+        printjobs(raw_str);
         break;
     case 9:
         sig(arguments);
